@@ -15,6 +15,6 @@ tput setaf 2
 echo "Done";
 else
 tput setaf 1
-echo "aborting push......"
+echo "Aborting push......"
 exit 0
 fi
