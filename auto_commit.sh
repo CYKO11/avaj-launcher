@@ -6,7 +6,7 @@ echo "."
 echo "."
 echo "Press [ P ] to push or any other key to cancel push"
 read -n 1 -s key
-if [[ $key == $'p'] || [ $key == $'P' ]];        # if input == ENTER key
+if [ $key == $'p'] || [ $key == $'P' ];        # if input == ENTER key
 then
 echo "pushing ......"
 git push
