@@ -2,7 +2,9 @@
 git add .
 git status
 git commit -m "$1"
-echo "Press enter to push or any key to cancel push"
+echo "."
+echo "."
+echo "Press [ P ] to push or any other key to cancel push"
 read -n 1 -s key
 echo $key
 if [[ $key == $'\x0a' ]];        # if input == ENTER key
