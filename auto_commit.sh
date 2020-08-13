@@ -12,9 +12,9 @@ tput setaf 7
 echo "pushing ......"
 git push
 tput setaf 2
-echo "done";
+echo "Done";
 else
-tput setaf 2
+tput setaf 1
 echo "aborting push......"
 exit 0
 fi
