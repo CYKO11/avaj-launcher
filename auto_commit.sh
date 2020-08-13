@@ -5,5 +5,5 @@ git commit -m "$1"
 read -n 1 -s key
 if [[ $key != $'\x0a' ]];        # if input == ENTER key
 then
-exit 0
+echo "enter"
 fi
