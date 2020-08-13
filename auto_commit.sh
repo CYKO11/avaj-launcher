@@ -3,9 +3,7 @@ git add .
 git status
 git commit -m "$1"
 read -s -N 1 -t 1 key
-if [[ $key == $'\x0a' ]];        # if input == ENTER key
+if [[ $key != $'\x0a' ]];        # if input == ENTER key
 then
-git push
-else
 exit 0
 fi
