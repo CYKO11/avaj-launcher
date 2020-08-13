@@ -4,10 +4,9 @@ git status
 git commit -m "$1"
 echo "."
 echo "."
-echo "Press [ p ] to push or any other key to cancel push"
+echo "Press [ P ] to push or any other key to cancel push"
 read -n 1 -s key
-echo $key
-if [[ $key == $'p' ]];        # if input == ENTER key
+if [[ $key == $'p' || $key == $'P']];        # if input == ENTER key
 then
 echo "pushing ......"
 git push
