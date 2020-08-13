@@ -1,7 +1,7 @@
 #!/bin/bash
 # make package script
 # first arg is the name of the package you want to create
-# the src/com/avajlaucnher has to be created mnually 
+# the src/com/avajlauncher has to be created mnually 
 # run from root of project as ./lib/mk_pkg.sh
 # your package shoult be created 
 # the package will be present in a folder named after the package
