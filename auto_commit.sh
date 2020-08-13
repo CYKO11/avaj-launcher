@@ -1,6 +1,10 @@
 #!/bin/bash
 git add .
-git status
 git commit -m "$1"
-wait
+git status
+if [[ $key == $'\x0a' ]];        # if input == ENTER key
+then
 git push
+else
+exit 0
+fi
