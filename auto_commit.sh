@@ -1,7 +1,7 @@
 #!/bin/bash
 git add .
-git commit -m "$1"
 git status
+git commit -m "$1"
 read -s -N 1 -t 1 key
 if [[ $key == $'\x0a' ]];        # if input == ENTER key
 then
