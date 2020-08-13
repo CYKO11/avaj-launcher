@@ -7,7 +7,7 @@ read -n 1 -s key
 if [[ $key != $'\x0a' ]];        # if input == ENTER key
 then
 echo "pushing ......"
-git push > /dev/null 2>&1
+git push
 echo "done";
 else
 echo "aborting push......"
