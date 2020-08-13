@@ -8,11 +8,13 @@ echo "$(tput setaf 2)Press [ P ] to push or any other key to cancel push"
 read -n 1 -s key
 if [ $key == $'p' ] || [ $key == $'P' ];        # if input == ENTER key
 then
+tput setaf 7
 echo "pushing ......"
-tput setaf 0
 git push
+tput setaf 2
 echo "done";
 else
+tput setaf 2
 echo "aborting push......"
 exit 0
 fi
