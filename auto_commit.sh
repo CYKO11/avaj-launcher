@@ -6,7 +6,9 @@ echo "Press enter to push or any key to cancel push"
 read -n 1 -s key
 if [[ $key != $'\x0a' ]];        # if input == ENTER key
 then
-git push
+echo "pushing ......"
+git push > dev/null
+echo "done";
 else
 echo "aborting push......"
 exit 0
