@@ -9,6 +9,7 @@ read -n 1 -s key
 if [ $key == $'p' ] || [ $key == $'P' ];        # if input == ENTER key
 then
 echo "pushing ......"
+tput setaf 0
 git push
 echo "done";
 else
