@@ -1,10 +1,12 @@
 #!/bin/bash
+tput setaf 7
 git add .
 git status
 git commit -m "$1"
 echo "."
 echo "."
-echo "$(tput setaf 2)Press [ P ] to push or any other key to cancel push"
+tput setaf 2
+echo "Press [ P ] to push or any other key to cancel push"
 read -n 1 -s key
 if [ $key == $'p' ] || [ $key == $'P' ];        # if input == ENTER key
 then
