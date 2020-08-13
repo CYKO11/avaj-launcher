@@ -1,4 +1,7 @@
 #!/bin/bash
+# builds an empty script 
+# not important for java 
+# dw about this one
 if [ $1 ]
 then
 tput setaf 2

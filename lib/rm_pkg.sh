@@ -1,4 +1,8 @@
 #!/bin/bash
+# remove package file
+# first arg is the name of the package
+# run from root as ./lib/rm_pkg.sh
+# will remove package and its respective folder
 if [ $1 ];
     then
         tput setaf 1
