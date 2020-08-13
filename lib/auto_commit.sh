@@ -2,7 +2,7 @@
 # auto commit script
 # 1st arg is the commit message 
 # run form root as ./lib/auto_commit.sh
-if [ "$1" != "" ];
+if [ "$1" ];
 then
     tput setaf 7
     git add .
