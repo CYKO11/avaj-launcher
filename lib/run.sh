@@ -1,3 +1,3 @@
 #!/bin/bash
 ./lib/compile.sh
-java -cp src com.avajlauncher.testpkg.$1 $2
+java -cp src com.avajlauncher.$1 $2
