@@ -1,13 +1,14 @@
 #!/bin/bash
 # remove package file
 # first arg is the name of the package
+# second is the name of the package contents
 # the src/com/avajlauncher has to be created mnually 
 # run from root as ./lib/rm_pkg.sh
 # will remove package and its respective folder
 if [ $1 ];
     then
         tput setaf 1
-        if [ ! -f src/com/avajlauncher/$1/$1.java ];
+        if [ ! -f src/com/avajlauncher/$1/$2.java ];
             then
                 echo "Package does not exist"
             else
