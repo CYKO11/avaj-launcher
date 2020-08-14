@@ -5,4 +5,4 @@
 # run from root ./lib/run.sh
 #
 ./lib/compile.sh
-java -cp src $1 $2
+java -cp src com.avaj.simulator.Simulator $1
