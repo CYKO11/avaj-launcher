@@ -14,23 +14,29 @@ public class Helicopter extends Aircraft implements Flyable {
 
 	public void updateConditions(){
 		String currentWeather = weatherTower.getWeather(this.coordinates);
-		System.out.print(this.coordinates.getLatitude() + " ");
-        System.out.print(this.coordinates.getLongitude() + " ");
-        System.out.print(this.coordinates.getHeight() + " ");
-		System.out.print(this.name + "\t ");
+		int lat = this.coordinates.getLatitude();
+		int lon = this.coordinates.getLongitude();
+		int height = this.coordinates.getHeight();
 		if (currentWeather == "Sun"){
-			System.out.print("lo + 10 , H + 2 \t\tSUN");
+			lon += 10;
+			height += 2;
 		}
 		else if (currentWeather == "Fog"){
-			System.out.print("lo + 1 \t\t\tFOG");
+			lon += 1;
 		}
 		else if (currentWeather == "Snow"){
-			System.out.print("H - 12 \t\t\tSNOW");
+			height -= 12;
+			if (height > 100)
+				height = 100;
+			else if (height <= 0){
+				// unregister plane
+				return ;
+			}
 		}
 		else if (currentWeather == "Rain"){
-			System.out.print("lo + 5 \t\t\tRAIN");
+			lon += 5;
 		}
-		System.out.println();
+		this.coordinates = new Coordinates(lon , lat , height);
 	}
 
 	public void registerTower(WeatherTower weatherTower){
