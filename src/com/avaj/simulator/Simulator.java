@@ -31,7 +31,7 @@ public class Simulator {
 
                 for (Flyable flyable : flyables) {
                     flyable.registerTower(weatherTower);
-                    flyable.test();
+                    // flyable.test();
                 }
 
                 for (int i = 1; i <= simulations; i++) {

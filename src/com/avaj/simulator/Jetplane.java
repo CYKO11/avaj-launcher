@@ -14,23 +14,33 @@ public class Jetplane extends Aircraft implements Flyable {
 
 	public void updateConditions(){
 		String currentWeather = weatherTower.getWeather(this.coordinates);
-		System.out.print(this.coordinates.getLatitude() + " ");
-        System.out.print(this.coordinates.getLongitude() + " ");
-        System.out.print(this.coordinates.getHeight() + " ");
-		System.out.print(this.name + "\t ");
+		int lat = this.coordinates.getLatitude();
+		int lon = this.coordinates.getLongitude();
+		int height = this.coordinates.getHeight();
+		System.out.print("Jet " + lat + " " + lon + " " + height +  " > ");
 		if (currentWeather == "Sun"){
-			System.out.print("la + 10 , H + 2 \t\tSUN");
+			lat += 10;
+			height += 2;
 		}
 		else if (currentWeather == "Fog"){
-			System.out.print("la + 1 \t\t\tFOG");
+			lat += 1;
 		}
 		else if (currentWeather == "Snow"){
-			System.out.print("H - 7 \t\t\t\tSNOW");
+			height -= 7;
+			if (height > 100)
+				height = 100;
+			else if (height <= 0){
+				// unregister plane
+				System.out.println(" land");
+				return ;
+			}
 		}
 		else if (currentWeather == "Rain"){
-			System.out.print("la + 5 \t\t\tRAIN");
+			lat += 5;
 		}
+		System.out.print(lat + " " + lon + " " + height);
 		System.out.println();
+		this.coordinates = new Coordinates(lon , lat , height);
 	}
 
 	public void registerTower(WeatherTower weatherTower){

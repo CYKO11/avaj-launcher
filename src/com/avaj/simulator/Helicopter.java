@@ -17,6 +17,7 @@ public class Helicopter extends Aircraft implements Flyable {
 		int lat = this.coordinates.getLatitude();
 		int lon = this.coordinates.getLongitude();
 		int height = this.coordinates.getHeight();
+		System.out.print("Heli " + lat + " " + lon + " " + height +  " > ");
 		if (currentWeather == "Sun"){
 			lon += 10;
 			height += 2;
@@ -30,12 +31,15 @@ public class Helicopter extends Aircraft implements Flyable {
 				height = 100;
 			else if (height <= 0){
 				// unregister plane
+				System.out.println(" land");
 				return ;
 			}
 		}
 		else if (currentWeather == "Rain"){
 			lon += 5;
 		}
+		System.out.print(lat + " " + lon + " " + height);
+		System.out.println();
 		this.coordinates = new Coordinates(lon , lat , height);
 	}
 
