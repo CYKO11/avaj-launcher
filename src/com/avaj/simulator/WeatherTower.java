@@ -1,9 +1,18 @@
 package com.avaj.simulator;
 
-public class WeatherTower {
+import java.util.*;
+
+public class WeatherTower extends Tower {
     public String getWeather(Coordinates coordinates){
-        return "its raining i guess";
+        // WeatherProvider fucker = WeatherProvider.getProvider();
+        // String currentWeather = fucker.getCurrentWeather(coordinates);
+        // return currentWeather;
+        String[] cancer = {"Rain","Fog","Sun","Snow"};
+        return cancer[(int)(Math.random()*((3-0)+1))+0];
     }
 
-    void changeWeather(){}
+    void changeWeather(){
+        System.out.println("changing weather");
+        this.conditionsChanged();
+    }
 }

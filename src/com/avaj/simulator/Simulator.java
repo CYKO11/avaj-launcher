@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Simulator {
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
@@ -31,13 +30,13 @@ public class Simulator {
                 }
 
                 for (Flyable flyable : flyables) {
-                    // flyable.registerTower(weatherTower);
+                    flyable.registerTower(weatherTower);
                     flyable.test();
                 }
 
-                // for (int i = 1; i <= simulations; i++) {
-                //     weatherTower.changeWeather();
-                // }
+                for (int i = 1; i <= simulations; i++) {
+                    weatherTower.changeWeather();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

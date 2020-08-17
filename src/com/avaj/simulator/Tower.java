@@ -1,9 +1,23 @@
 package com.avaj.simulator;
 
-public abstract class Tower extends WeatherTower {
-    Flyable obervers;
+import java.util.*;
 
-    public void register(Flyable flyable){}
-    public void unregister(Flyable flyable){}
-    protected void conditionsChanged(){}
+public abstract class Tower {
+    private List<Flyable> observers = new ArrayList<>(); 
+
+    public void register(Flyable flyable){
+        observers.add(flyable);
+        //do some shit
+    }
+
+    public void unregister(Flyable flyable){
+        observers.remove(flyable);
+        //do some shit
+    }
+
+    protected void conditionsChanged(){
+        for(Flyable flyable : observers){
+            flyable.updateConditions();
+        }
+    }
 }

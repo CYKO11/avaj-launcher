@@ -19,7 +19,7 @@ public class Coordinates {
         return this.latitude;
     }
 
-    public int getheight(){
+    public int getHeight(){
         return this.height;
     }
 }
