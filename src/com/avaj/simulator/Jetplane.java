@@ -5,6 +5,11 @@ public class Jetplane extends Aircraft implements Flyable {
 
 	Jetplane(String name, Coordinates coordinates){
 		super(name, coordinates);
+		// return super;
+	}
+
+	public void test(){
+		System.out.println("Jetplane present");
 	}
 
 	public void updateConditions(){
