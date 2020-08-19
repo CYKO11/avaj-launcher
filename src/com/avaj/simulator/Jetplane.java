@@ -23,11 +23,11 @@ public class Jetplane extends Aircraft implements Flyable {
 			height += 2;
 			if (height > 100)
 				height = 100;
-			Simulator.fileOutput = Simulator.fileOutput + " \n";
+			Simulator.fileOutput = Simulator.fileOutput + " This is your captin speaking, please bring me some water it bloody hot in here\n";
 		}
 		else if (currentWeather == "Fog"){
 			lat += 1;
-			Simulator.fileOutput = Simulator.fileOutput + " \n";
+			Simulator.fileOutput = Simulator.fileOutput + " well idk whats in front of us but I really hope its not another plane\n";
 		}
 		else if (currentWeather == "Snow"){
 			height -= 7;
@@ -36,12 +36,12 @@ public class Jetplane extends Aircraft implements Flyable {
 				Simulator.fileOutput = Simulator.fileOutput + " Landing\n";
 				return ;
 			} else {
-				Simulator.fileOutput = Simulator.fileOutput + " \n";
+				Simulator.fileOutput = Simulator.fileOutput + " I think elsa is on a rampage again\n";
 			}
 		}
 		else if (currentWeather == "Rain"){
 			lat += 5;
-			Simulator.fileOutput = Simulator.fileOutput + " \n";
+			Simulator.fileOutput = Simulator.fileOutput + "  This is your captain speaking PUT SOME ANIME FOR THIS PERFECT NETFLIX WEATHER\n";
 		}
 		this.coordinates = new Coordinates(lon , lat , height);
 	}

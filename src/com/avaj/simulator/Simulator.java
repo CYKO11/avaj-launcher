@@ -37,7 +37,6 @@ public class Simulator {
                 myObj.createNewFile();
 
                 for (int i = 1; i <= simulations; i++) {   
-                    // Simulator.fileOutput = Simulator.fileOutput + "Simulation :" + i + "\n"; 
                     weatherTower.changeWeather();
                 }
 
