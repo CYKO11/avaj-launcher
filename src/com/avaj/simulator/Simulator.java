@@ -3,6 +3,8 @@ package com.avaj.simulator;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 public class Simulator {
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
+    public static String fileOutput = "";
 
     public static void main(String[] args) throws InterruptedException {
         try {
@@ -23,20 +26,24 @@ public class Simulator {
                     System.exit(1);
                 }
                 while ((line = reader.readLine()) != null) {
-                    Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
-                            Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
-                            Integer.parseInt(line.split(" ")[4]));
-                    flyables.add(flyable);
+                    Simulator.fileOutput = Simulator.fileOutput + "Tower says: " + line.split(" ")[0] + "#" + line.split(" ")[1];
+                    AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
+                        Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
+                        Integer.parseInt(line.split(" ")[4])).registerTower(weatherTower);
+                    Simulator.fileOutput = Simulator.fileOutput + " registered to weather tower.\n";
                 }
 
-                for (Flyable flyable : flyables) {
-                    flyable.registerTower(weatherTower);
-                    // flyable.test();
-                }
+                File myObj = new File("simulation.txt");
+                myObj.createNewFile();
 
-                for (int i = 1; i <= simulations; i++) {
+                for (int i = 1; i <= simulations; i++) {   
+                    // Simulator.fileOutput = Simulator.fileOutput + "Simulation :" + i + "\n"; 
                     weatherTower.changeWeather();
                 }
+
+                FileWriter myWriter = new FileWriter("simulation.txt");
+                myWriter.write(Simulator.fileOutput);
+                myWriter.close();
             }
         } catch (IOException e) {
             e.printStackTrace();

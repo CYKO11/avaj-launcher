@@ -1,6 +1,9 @@
 package com.avaj.simulator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class Tower {
     private List<Flyable> observers = new ArrayList<>(); 
@@ -16,7 +19,9 @@ public abstract class Tower {
     }
 
     protected void conditionsChanged(){
-        for(Flyable flyable : observers){
+        List<Flyable> dupObservers = new ArrayList<>();
+        dupObservers.addAll(observers);
+        for(Flyable flyable : dupObservers){
             flyable.updateConditions();
         }
     }

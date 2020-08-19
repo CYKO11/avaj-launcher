@@ -10,9 +10,12 @@ public abstract class Aircraft {
 	protected Aircraft(String name, Coordinates coordinates){
 		this.name = name;
 		this.coordinates = coordinates;
+		this.id = nextId();
+		Simulator.fileOutput = Simulator.fileOutput + "(" + this.id + ")";
 	}
 
 	private long nextId(){
-		return this.idCounter + 1;
+		Aircraft.idCounter++;
+		return Aircraft.idCounter;
 	}
 }

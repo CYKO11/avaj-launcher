@@ -17,29 +17,32 @@ public class Jetplane extends Aircraft implements Flyable {
 		int lat = this.coordinates.getLatitude();
 		int lon = this.coordinates.getLongitude();
 		int height = this.coordinates.getHeight();
-		System.out.print("Jet " + lat + " " + lon + " " + height +  " > ");
+		Simulator.fileOutput = Simulator.fileOutput + "Jetplane#" + this.name + "(" + this.id + ")";
 		if (currentWeather == "Sun"){
 			lat += 10;
 			height += 2;
+			if (height > 100)
+				height = 100;
+			Simulator.fileOutput = Simulator.fileOutput + " \n";
 		}
 		else if (currentWeather == "Fog"){
 			lat += 1;
+			Simulator.fileOutput = Simulator.fileOutput + " \n";
 		}
 		else if (currentWeather == "Snow"){
 			height -= 7;
-			if (height > 100)
-				height = 100;
-			else if (height <= 0){
-				// unregister plane
-				System.out.println(" land");
+			if (height <= 0){
+				this.weatherTower.unregister(this);
+				Simulator.fileOutput = Simulator.fileOutput + " Landing\n";
 				return ;
+			} else {
+				Simulator.fileOutput = Simulator.fileOutput + " \n";
 			}
 		}
 		else if (currentWeather == "Rain"){
 			lat += 5;
+			Simulator.fileOutput = Simulator.fileOutput + " \n";
 		}
-		System.out.print(lat + " " + lon + " " + height);
-		System.out.println();
 		this.coordinates = new Coordinates(lon , lat , height);
 	}
 
