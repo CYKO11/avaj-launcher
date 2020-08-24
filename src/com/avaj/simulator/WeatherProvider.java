@@ -13,8 +13,8 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates){
-        String[] cancer = {"Rain","Fog","Sun","Snow"};
-        System.out.println(cancer[1]);
-        return cancer[1];
+        String[] weatherOptions = {"Rain","Fog","Sun","Snow"};
+        System.out.println(weatherOptions[1]);
+        return weatherOptions[1];
     }
 }

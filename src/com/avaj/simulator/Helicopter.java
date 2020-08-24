@@ -30,13 +30,14 @@ public class Helicopter extends Aircraft implements Flyable {
 		}
 		else if (currentWeather == "Fog"){
 			lon += 1;
-			Simulator.fileOutput = Simulator.fileOutput + " im legally blaand\n";
+			Simulator.fileOutput = Simulator.fileOutput + " im legally blind\n";
 		}
 		else if (currentWeather == "Snow"){
 			height -= 12;
 			if (height <= 0){
-				this.weatherTower.unregister(this);
 				Simulator.fileOutput = Simulator.fileOutput + " Landing\n";
+				this.weatherTower.unregister(this);
+				Simulator.fileOutput = Simulator.fileOutput + "Tower says: helicopter" + this.name + "#(" + this.id + ") unregistered from weather tower\n";
 				return ;
 			} else {
 				Simulator.fileOutput = Simulator.fileOutput + " private make me coffee , two sugars\n";

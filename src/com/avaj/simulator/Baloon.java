@@ -32,8 +32,9 @@ public class Baloon extends Aircraft implements Flyable {
 		else if (currentWeather == "Snow"){
 			height -= 15;
 			if (height <= 0){
-				this.weatherTower.unregister(this);
 				Simulator.fileOutput = Simulator.fileOutput + " Landing\n";
+				this.weatherTower.unregister(this);
+				Simulator.fileOutput = Simulator.fileOutput + "Tower says: baloon" + this.name + "#(" + this.id + ") unregistered from weather tower\n";
 				return ;
 			} else {
 				Simulator.fileOutput = Simulator.fileOutput + " Its so cold that I spelled balloon wrong\n";

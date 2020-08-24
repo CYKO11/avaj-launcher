@@ -49,7 +49,7 @@ public class Simulator {
         }  catch (IOException e) {
             System.out.println("Error reading file: " + args[0]);
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("File error");
+            System.out.println("No scenario file specified");
         } catch (NumberFormatException e) {
             System.out.println("Invalid number format in scenario file");
         } catch (NullPointerException e) {

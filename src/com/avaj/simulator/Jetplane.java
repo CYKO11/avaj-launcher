@@ -32,8 +32,9 @@ public class Jetplane extends Aircraft implements Flyable {
 		else if (currentWeather == "Snow"){
 			height -= 7;
 			if (height <= 0){
-				this.weatherTower.unregister(this);
 				Simulator.fileOutput = Simulator.fileOutput + " Landing\n";
+				this.weatherTower.unregister(this);
+				Simulator.fileOutput = Simulator.fileOutput + "Tower says: jetplane" + this.name + "#(" + this.id + ") unregistered from weather tower\n";
 				return ;
 			} else {
 				Simulator.fileOutput = Simulator.fileOutput + " I think elsa is on a rampage again\n";
