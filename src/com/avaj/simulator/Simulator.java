@@ -44,7 +44,18 @@ public class Simulator {
                 myWriter.write(Simulator.fileOutput);
                 myWriter.close();
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found exception " + args[0]);
+        }  catch (IOException e) {
+            System.out.println("Error reading file: " + args[0]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("File error");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format in scenario file");
+        } catch (NullPointerException e) {
+            System.out.println("Null point found in file");
+        } catch (Exception e) {
+            System.out.println("Invalid input inside scenario file");
             e.printStackTrace();
         }
 	}

@@ -23,7 +23,7 @@ public class Jetplane extends Aircraft implements Flyable {
 			height += 2;
 			if (height > 100)
 				height = 100;
-			Simulator.fileOutput = Simulator.fileOutput + " This is your captin speaking, please bring me some water it bloody hot in here\n";
+			Simulator.fileOutput = Simulator.fileOutput + " This is your captin speaking, please bring me some water its bloody hot in here\n";
 		}
 		else if (currentWeather == "Fog"){
 			lat += 1;
