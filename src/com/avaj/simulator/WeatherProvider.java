@@ -1,20 +1,18 @@
 package com.avaj.simulator;
 
 public class WeatherProvider {
-    private static WeatherProvider weatherProvider;
-    private static String[] weather;
+    private static WeatherProvider weatherProvider = new WeatherProvider();
+    private static String[] weather = {"Rain","Fog","Sun","Snow"};
 
     private WeatherProvider(){
-        this.weatherProvider = this; 
+
     }
 
     public static WeatherProvider getProvider(){
-        return WeatherProvider.weatherProvider;
+        return weatherProvider;
     }
 
     public String getCurrentWeather(Coordinates coordinates){
-        String[] weatherOptions = {"Rain","Fog","Sun","Snow"};
-        System.out.println(weatherOptions[1]);
-        return weatherOptions[1];
+        return weather[(int)(Math.random()*((3-0)+1))+0];
     }
 }

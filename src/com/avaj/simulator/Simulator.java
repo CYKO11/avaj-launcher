@@ -15,48 +15,52 @@ public class Simulator {
     public static String fileOutput = "";
 
     public static void main(String[] args) throws InterruptedException {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-            String line = reader.readLine();
-            if (line != null) {
-                weatherTower = new WeatherTower();
-                int simulations = Integer.parseInt(line.split(" ")[0]);
-                if (simulations < 0) {
-                    System.out.println("Invalid simulations count");
-                    System.exit(1);
+        if (args.length == 1){
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+                String line = reader.readLine();
+                if (line != null) {
+                    weatherTower = new WeatherTower();
+                    int simulations = Integer.parseInt(line.split(" ")[0]);
+                    if (simulations < 0) {
+                        System.out.println("Invalid simulations count");
+                        System.exit(1);
+                    }
+                    while ((line = reader.readLine()) != null) {
+                        Simulator.fileOutput = Simulator.fileOutput + "Tower says: " + line.split(" ")[0] + "#" + line.split(" ")[1];
+                        AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
+                            Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
+                            Integer.parseInt(line.split(" ")[4])).registerTower(weatherTower);
+                        Simulator.fileOutput = Simulator.fileOutput + " registered to weather tower.\n";
+                    }
+    
+                    File myObj = new File("simulation.txt");
+                    myObj.createNewFile();
+    
+                    for (int i = 1; i <= simulations; i++) {   
+                        weatherTower.changeWeather();
+                    }
+    
+                    FileWriter myWriter = new FileWriter("simulation.txt");
+                    myWriter.write(Simulator.fileOutput);
+                    myWriter.close();
                 }
-                while ((line = reader.readLine()) != null) {
-                    Simulator.fileOutput = Simulator.fileOutput + "Tower says: " + line.split(" ")[0] + "#" + line.split(" ")[1];
-                    AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
-                        Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
-                        Integer.parseInt(line.split(" ")[4])).registerTower(weatherTower);
-                    Simulator.fileOutput = Simulator.fileOutput + " registered to weather tower.\n";
-                }
-
-                File myObj = new File("simulation.txt");
-                myObj.createNewFile();
-
-                for (int i = 1; i <= simulations; i++) {   
-                    weatherTower.changeWeather();
-                }
-
-                FileWriter myWriter = new FileWriter("simulation.txt");
-                myWriter.write(Simulator.fileOutput);
-                myWriter.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("Cannot find file : " + args[0]);
+            }  catch (IOException e) {
+                System.out.println("Error reading file: " + args[0]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Scenario file format invalid");
+            } catch (NumberFormatException e) {
+                System.out.println("A Number in scenario file is invalid,too large or unspecified");
+            } catch (NullPointerException e) {
+                System.out.println("Null point found in scenario file");
+            } catch (Exception e) {
+                System.out.println("Invalid input inside scenario file");
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found exception " + args[0]);
-        }  catch (IOException e) {
-            System.out.println("Error reading file: " + args[0]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("No scenario file specified");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number format in scenario file");
-        } catch (NullPointerException e) {
-            System.out.println("Null point found in file");
-        } catch (Exception e) {
-            System.out.println("Invalid input inside scenario file");
-            e.printStackTrace();
+        } else if (args.length == 0){
+            System.out.println("Scenario file required");
         }
 	}
 }
